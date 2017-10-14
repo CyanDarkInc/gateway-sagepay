@@ -1,4 +1,5 @@
 <?php
+
 // Errors
 $lang['Sagepay.!error.vendor_name.empty'] = 'Please enter your Sage Pay vendor name.';
 $lang['Sagepay.!error.integration_key.empty'] = 'Please enter your Sage Pay integration key.';

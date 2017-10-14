@@ -23,6 +23,6 @@
             $this->Form->fieldCheckbox('developer_mode', 'true', ($this->Html->ifSet($meta['developer_mode'], 'false') == 'true'), ['id'=>'developer_mode']);
             $this->Form->label($this->_('Sagepay.developer_mode', true), 'developer_mode', ['class'=>'inline']);
             ?>
-			<span class="tooltip"><?php $this->_('AppController.tooltip.text');?><div><?php $this->_('Sagepay.tooltip_developer_mode');?></div></span>
+			<span class="tooltip"><?php $this->_('AppController.tooltip.text'); ?><div><?php $this->_('Sagepay.tooltip_developer_mode'); ?></div></span>
 		</li>
 	</ul>

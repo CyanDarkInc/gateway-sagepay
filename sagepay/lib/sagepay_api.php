@@ -36,6 +36,7 @@ class SagepayApi
      * @param string $vendor_name The vendor name
      * @param string $integration_key The integration key
      * @param string $integration_password The integration password
+     * @param mixed $sandbox
      */
     public function __construct($vendor_name, $integration_key, $integration_password, $sandbox = false)
     {
@@ -56,7 +57,7 @@ class SagepayApi
     private function apiRequest($method, array $params = [], $merchant_session_key = null)
     {
         $url = 'https://pi-' . ($this->sandbox ? 'test' : 'live') . '.sagepay.com/api/v1/';
-        
+
         // Send request
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_TIMEOUT, 20);
@@ -101,7 +102,7 @@ class SagepayApi
 
     /**
      * Generates a card identifier.
-     * 
+     *
      * @param string $card_holder The card holder name
      * @param string $card_number The card number
      * @param int $exp_date The card expiration date, in MMYY format
@@ -169,7 +170,3 @@ $payment = $app->buildPayment($card_identifier, '100.00', 'GBP', [
     ]
 ]);
 print_r($payment);
-
-
-
-

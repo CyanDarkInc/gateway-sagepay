@@ -448,12 +448,6 @@ class Sagepay extends MerchantGateway implements MerchantCc
         ];
         $required_fields = [];
 
-        // Use the Sage Pay test account details if test mode is enabled
-        if ($this->ifSet($this->meta['test_mode']) == 'true') {
-            $params['sagepayCustomerID'] = $this->test_account['customer_id'];
-            $params['sagepayCardNumber'] = $this->test_account['credit_card_number'];
-        }
-
         // Set which fields are required to be sent
         switch ($transaction_type) {
             case 'process':

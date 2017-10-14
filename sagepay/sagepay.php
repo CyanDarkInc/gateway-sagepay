@@ -47,7 +47,7 @@ class Sagepay extends MerchantGateway implements MerchantCc
     ];
 
     /**
-     * Construct a new merchant gateway
+     * Construct a new merchant gateway.
      */
     public function __construct()
     {
@@ -59,7 +59,7 @@ class Sagepay extends MerchantGateway implements MerchantCc
     }
 
     /**
-     * Attempt to install this gateway
+     * Attempt to install this gateway.
      */
     public function install()
     {
@@ -75,7 +75,7 @@ class Sagepay extends MerchantGateway implements MerchantCc
     }
 
     /**
-     * Returns the name of this gateway
+     * Returns the name of this gateway.
      *
      * @return string The common name of this gateway
      */
@@ -85,7 +85,7 @@ class Sagepay extends MerchantGateway implements MerchantCc
     }
 
     /**
-     * Returns the version of this gateway
+     * Returns the version of this gateway.
      *
      * @return string The current version of this gateway
      */
@@ -95,7 +95,7 @@ class Sagepay extends MerchantGateway implements MerchantCc
     }
 
     /**
-     * Returns the name and URL for the authors of this gateway
+     * Returns the name and URL for the authors of this gateway.
      *
      * @return array The name and URL of the authors of this gateway
      */
@@ -105,7 +105,7 @@ class Sagepay extends MerchantGateway implements MerchantCc
     }
 
     /**
-     * Return all currencies supported by this gateway
+     * Return all currencies supported by this gateway.
      *
      * @return array A numerically indexed array containing all currency codes (ISO 4217 format) this gateway supports
      */
@@ -115,7 +115,7 @@ class Sagepay extends MerchantGateway implements MerchantCc
     }
 
     /**
-     * Sets the currency code to be used for all subsequent payments
+     * Sets the currency code to be used for all subsequent payments.
      *
      * @param string $currency The ISO 4217 currency code to be used for subsequent payments
      */
@@ -125,7 +125,7 @@ class Sagepay extends MerchantGateway implements MerchantCc
     }
 
     /**
-     * Create and return the view content required to modify the settings of this gateway
+     * Create and return the view content required to modify the settings of this gateway.
      *
      * @param array $meta An array of meta (settings) data belonging to this gateway
      * @return string HTML content containing the fields to update the meta data for this gateway
@@ -135,7 +135,7 @@ class Sagepay extends MerchantGateway implements MerchantCc
         // Load the view into this object, so helpers can be automatically added to the view
         $this->view = new View('settings', 'default');
         $this->view->setDefaultView('components' . DS . 'gateways' . DS . 'merchant' . DS . 'sagepay' . DS);
-        
+
         // Load the helpers required for this view
         Loader::loadHelpers($this, ['Form', 'Html']);
 
@@ -145,7 +145,7 @@ class Sagepay extends MerchantGateway implements MerchantCc
     }
 
     /**
-     * Validates the given meta (settings) data to be updated for this gateway
+     * Validates the given meta (settings) data to be updated for this gateway.
      *
      * @param array $meta An array of meta (settings) data to be updated for this gateway
      * @return array The meta data to be updated in the database for this gateway, or reset into the form on failure
@@ -198,7 +198,7 @@ class Sagepay extends MerchantGateway implements MerchantCc
     }
 
     /**
-     * Returns an array of all fields to encrypt when storing in the database
+     * Returns an array of all fields to encrypt when storing in the database.
      *
      * @return array An array of the field names to encrypt when storing in the database
      */
@@ -208,7 +208,7 @@ class Sagepay extends MerchantGateway implements MerchantCc
     }
 
     /**
-     * Sets the meta data for this particular gateway
+     * Sets the meta data for this particular gateway.
      *
      * @param array $meta An array of meta data to set for this gateway
      */
@@ -218,7 +218,7 @@ class Sagepay extends MerchantGateway implements MerchantCc
     }
 
     /**
-     * Used to determine whether this gateway can be configured for autodebiting accounts
+     * Used to determine whether this gateway can be configured for autodebiting accounts.
      *
      * @return bool True if the customer must be present
      *  (e.g. in the case of credit card customer must enter security code), false otherwise
@@ -229,7 +229,7 @@ class Sagepay extends MerchantGateway implements MerchantCc
     }
 
     /**
-     * Charge a credit card
+     * Charge a credit card.
      *
      * @param array $card_info An array of credit card info including:
      *  - first_name The first name on the card
@@ -270,7 +270,7 @@ class Sagepay extends MerchantGateway implements MerchantCc
     }
 
     /**
-     * Authorize a credit card
+     * Authorize a credit card.
      *
      * @param array $card_info An array of credit card info including:
      *  - first_name The first name on the card
@@ -309,7 +309,7 @@ class Sagepay extends MerchantGateway implements MerchantCc
     }
 
     /**
-     * Capture the funds of a previously authorized credit card
+     * Capture the funds of a previously authorized credit card.
      *
      * @param string $reference_id The reference ID for the previously authorized transaction
      * @param string $transaction_id The transaction ID for the previously authorized transaction
@@ -331,7 +331,7 @@ class Sagepay extends MerchantGateway implements MerchantCc
     }
 
     /**
-     * Void a credit card charge
+     * Void a credit card charge.
      *
      * @param string $reference_id The reference ID for the previously authorized transaction
      * @param string $transaction_id The transaction ID for the previously authorized transaction
@@ -349,7 +349,7 @@ class Sagepay extends MerchantGateway implements MerchantCc
     }
 
     /**
-     * Refund a credit card charge
+     * Refund a credit card charge.
      *
      * @param string $reference_id The reference ID for the previously authorized transaction
      * @param string $transaction_id The transaction ID for the previously authorized transaction
@@ -365,7 +365,7 @@ class Sagepay extends MerchantGateway implements MerchantCc
     {
         // Refund this payment transaction
         $action = 'refund';
-        
+
         $result = $this->processTransaction($this->getRequestUrl($action), $this->getFields($action, $transaction_id, $amount));
 
         // An approved refunded transaction should have a status of refunded
@@ -377,7 +377,7 @@ class Sagepay extends MerchantGateway implements MerchantCc
     }
 
     /**
-     * Constructs the JSON and fields to be sent to Sage Pay
+     * Constructs the JSON and fields to be sent to Sage Pay.
      *
      * @param string $transaction_type The type of transaction to perform ("process", "refund")
      * @param int $transaction_id The ID of a previous transaction if available
@@ -417,7 +417,7 @@ class Sagepay extends MerchantGateway implements MerchantCc
 
         // Generate the card identifier
         $card_identifier = $this->getCardIdentifier($this->getRequestUrl('identifier'), $card_info, $merchant_session_key);
-        
+
         // Generate a unique ID
         $unique_id = uniqid();
 
@@ -487,7 +487,7 @@ class Sagepay extends MerchantGateway implements MerchantCc
     }
 
     /**
-     * Builds the JSON request to be sent to Sage Pay
+     * Builds the JSON request to be sent to Sage Pay.
      *
      * @param array $fields A list of fields to pass to Sage Pay
      * @return string The constructed JSON
@@ -505,12 +505,13 @@ class Sagepay extends MerchantGateway implements MerchantCc
     }
 
     /**
-     * Processes a transaction
+     * Processes a transaction.
      *
      * @param string The URL to post to
      * @param array A list of fields and json including:
      *  - fields A list of fields used to construct the JSON
      *  - json The JSON constructed from fields
+     * @param mixed $url
      * @return array A list of response key=>value pairs including:
      *  - status (approved, declined, or error)
      *  - reference_id
@@ -556,7 +557,7 @@ class Sagepay extends MerchantGateway implements MerchantCc
 
     /**
      * Retrieves the transaction status (approved, declined, error) based on the
-     * response from the gateway
+     * response from the gateway.
      *
      * @param array $response A list of key/value pairs representing the response from the gateway
      * @return array The transaction status, including:
@@ -641,7 +642,7 @@ class Sagepay extends MerchantGateway implements MerchantCc
 
     /**
      * Creates a merchant session key.
-     * 
+     *
      * @param string $url The URL to post to
      * @return string The merchant session key
      */
@@ -671,7 +672,7 @@ class Sagepay extends MerchantGateway implements MerchantCc
     }
 
     /**
-     * Parses the response from the gateway into an associative array
+     * Parses the response from the gateway into an associative array.
      *
      * @param string $response The response from the gateway
      * @return array A list of key/value pairs representing the response from the gateway
@@ -682,11 +683,13 @@ class Sagepay extends MerchantGateway implements MerchantCc
     }
 
     /**
-     * Log the request
+     * Log the request.
      *
      * @param array The input parameters sent to the gateway
      * @param array The response from the gateway
      * @param string $url The URL of the request was sent to
+     * @param mixed $params
+     * @param mixed $response
      */
     private function logRequest($params, $response, $url)
     {
@@ -706,7 +709,7 @@ class Sagepay extends MerchantGateway implements MerchantCc
     }
 
     /**
-     * Retrieves the API URL to post to based on the action
+     * Retrieves the API URL to post to based on the action.
      *
      * @param string $transaction_type The type of transaction to perform ("process", "refund")
      * @return string The URL to post to

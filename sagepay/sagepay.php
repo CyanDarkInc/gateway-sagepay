@@ -179,7 +179,7 @@ class Sagepay extends MerchantGateway implements MerchantCc
                 'valid' => [
                     'if_set' => true,
                     'rule' => ['in_array', ['true', 'false']],
-                    'message' => Language::_('Eway.!error.developer_mode.valid', true)
+                    'message' => Language::_('Sagepay.!error.developer_mode.valid', true)
                 ]
             ]
         ];

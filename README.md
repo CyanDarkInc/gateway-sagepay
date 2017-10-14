@@ -1,6 +1,6 @@
 # Sage Pay Gateway
 
-A Blesta gateway that integrates with [Sage Pay](https://sagepay.co.uk/).
+A Blesta gateway that integrates with [Sage Pay](http://sagepay.co.uk/).
 
 Originally created by Phillips Data, Inc.
 

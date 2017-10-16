@@ -67,7 +67,7 @@ class Sagepay extends MerchantGateway implements MerchantCc
         if (!function_exists('json_decode')) {
             $errors = [
                 'json' => [
-                    'required' => Language::_('Stripe_gateway.!error.json_required', true)
+                    'required' => Language::_('Sagepay.!error.json_required', true)
                 ]
             ];
             $this->Input->setErrors($errors);

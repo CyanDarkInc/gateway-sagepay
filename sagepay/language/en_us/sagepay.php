@@ -9,8 +9,7 @@ $lang['Sagepay.!error.developer_mode.valid'] = 'Developer mode must be set to "t
 $lang['Sagepay.!error.test_mode.valid'] = 'Test mode must be set to "true" if given.';
 
 $lang['Sagepay.!error.refund_password.empty'] = 'A refund password must be set in order to process refunds through Sage Pay.';
-$lang['Sagepay.!error.libxml_required'] = 'The libxml and simplexml extensions are required for this gateway.';
-$lang['Sagepay.!error.invalid_xml'] = 'The gateway responded with invalid XML.';
+$lang['Sagepay.!error.json_required'] = 'The json extension are required for this gateway.';
 
 $lang['Sagepay.name'] = 'Sage Pay';
 
